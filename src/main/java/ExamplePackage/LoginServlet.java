@@ -31,12 +31,11 @@ public class LoginServlet extends HttpServlet {
             if (user.isValid()) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("currentSessionUser", user);
-                response.sendRedirect("userLogged.jsp"); // Logged-in page
+                response.sendRedirect(request.getContextPath() + "/userLogged.jsp");
             } 
             // If user is not valid
             else {
-                response.sendRedirect("invalidLogin.jsp"); // Error page
-            }
+            	response.sendRedirect(request.getContextPath() + "/invalidLogin.jsp");            }
         } catch (Throwable ex) {
             System.out.println("Error in LoginServlet: " + ex);
             ex.printStackTrace();
